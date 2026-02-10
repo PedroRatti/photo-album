@@ -1,0 +1,389 @@
+:root {
+    --bg: #0F172A;
+
+    --cover-bg: rgb(245, 245, 245);
+    --page-bg: #f4f2ee;
+
+    --ink: #0f172a;
+
+    --radius: 16px;
+    --shadow-strong: 0 18px 50px rgba(0, 0, 0, .35);
+    --shadow-soft: 0 18px 50px rgba(0, 0, 0, .18);
+
+    --page-w: 460px;
+    --page-h: 600px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
+}
+
+.app {
+    min-height: 100vh;
+    display: flex;
+}
+
+.stage {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+/* =========================
+   VIEWS
+========================= */
+.view.is-hidden {
+    display: none;
+}
+
+/* =========================
+   CAPA (ÁLBUM FECHADO)
+========================= */
+.cover-rect {
+    width: var(--page-w);
+    height: var(--page-h);
+    background: var(--cover-bg);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-strong);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 28px;
+}
+
+.cover-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.cover-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--ink);
+    letter-spacing: .2px;
+}
+
+.cover-subtitle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    font-size: 14px;
+    opacity: .75;
+    color: var(--ink);
+}
+
+/* área da foto da capa */
+.cover-photo {
+    border-radius: 18px;
+    padding: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cover-photo img {
+    width: 320px;
+    height: 320px;
+    object-fit: cover;
+    border-radius: 10px;
+    display: block;
+}
+
+.see-photos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 18px;
+}
+
+/* botão primário (usado na capa) */
+.btn-primary {
+    appearance: none;
+    border: 1px solid rgba(15, 23, 42, 0.12);
+    background: linear-gradient(180deg, #ffffff, #f3f4f6);
+    color: var(--ink);
+
+    padding: 10px 16px;
+    border-radius: 12px;
+    font-weight: 650;
+    font-size: 14px;
+    letter-spacing: 0.2px;
+
+    cursor: pointer;
+    box-shadow: 0 8px 22px rgba(15, 23, 42, 0.12);
+    transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.16);
+    background: linear-gradient(180deg, #ffffff, #eceff3);
+}
+
+.btn-primary:active {
+    transform: translateY(0px);
+    box-shadow: 0 8px 18px rgba(15, 23, 42, 0.12);
+}
+
+.btn-primary:focus-visible {
+    outline: 3px solid rgba(37, 99, 235, 0.35);
+    outline-offset: 3px;
+}
+
+/* =========================
+   ÁLBUM ABERTO (SPREAD)
+========================= */
+.spread {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* cada página */
+.page-rect {
+    width: var(--page-w);
+    height: var(--page-h);
+    border-radius: var(--radius);
+    background: var(--page-bg);
+    box-shadow: var(--shadow-soft);
+    border: 1px solid rgba(15, 23, 42, .08);
+    position: relative;
+    overflow: hidden;
+}
+
+/* detalhe do "miolo" */
+.page-left {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.page-right {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+/* =========================
+   BOTÕES DE NAVEGAÇÃO (setas)
+   - ficam no rodapé da página
+========================= */
+.nav-btn {
+    position: absolute;
+    bottom: 14px;
+    top: auto;
+
+    width: 46px;
+    height: 46px;
+    border-radius: 14px;
+
+    border: 1px solid rgba(15, 23, 42, 0.10);
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(6px);
+
+    color: var(--ink);
+    cursor: pointer;
+
+    display: grid;
+    place-items: center;
+    font-size: 20px;
+
+    box-shadow: 0 10px 20px rgba(15, 23, 42, 0.10);
+    transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease;
+}
+
+.nav-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 14px 26px rgba(15, 23, 42, 0.14);
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.nav-btn:active {
+    transform: translateY(0px);
+}
+
+.nav-left {
+    left: 14px;
+}
+
+.nav-right {
+    right: 14px;
+}
+
+/* =========================
+   CONTEÚDO DAS PÁGINAS
+========================= */
+.page-content {
+    padding: 22px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    /* deixa espaço pros botões de seta no rodapé */
+    padding-bottom: 78px;
+}
+
+/* linha: (foto + legenda) */
+.photo-row {
+    display: grid;
+    grid-template-columns: 170px 1fr;
+    gap: 16px;
+    align-items: center;
+
+    background: rgba(15, 23, 42, 0.03);
+    border: 1px solid rgba(15, 23, 42, 0.06);
+    border-radius: 16px;
+    padding: 14px;
+}
+
+/* alterna o lado da imagem (2ª foto invertida) */
+.photo-row.reverse {
+    grid-template-columns: 1fr 170px;
+}
+
+/* frame da imagem */
+.photo-box {
+    width: 170px;
+    height: 130px;
+    border-radius: 14px;
+    overflow: hidden;
+    background: rgba(15, 23, 42, 0.06);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, .06);
+}
+
+.photo-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* legenda */
+.photo-caption {
+    min-width: 0;
+    color: var(--ink);
+    font-size: 14px;
+    line-height: 1.35;
+}
+
+.photo-caption strong {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 15px;
+    font-weight: 750;
+    letter-spacing: .2px;
+}
+
+.photo-caption span {
+    display: block;
+    color: rgba(15, 23, 42, 0.78);
+}
+
+/* slot vazio */
+.photo-row.empty {
+    opacity: 0.55;
+}
+
+/* =========================
+   RESPONSIVO
+========================= */
+@media (max-width: 980px) {
+    .spread {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .page-rect {
+        width: min(460px, 92vw);
+        height: 560px;
+    }
+
+    .photo-row {
+        grid-template-columns: 140px 1fr;
+    }
+
+    .photo-row.reverse {
+        grid-template-columns: 1fr 140px;
+    }
+
+    .photo-box {
+        width: 140px;
+        height: 120px;
+    }
+}
+
+/* ====== LIGHTBOX ====== */
+.lightbox.is-hidden {
+    display: none;
+}
+
+.lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+}
+
+.lightbox__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(2px);
+}
+
+.lightbox__dialog {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: min(92vw, 980px);
+    max-height: min(92vh, 860px);
+    background: #f4f2ee;
+    border-radius: 18px;
+    box-shadow: 0 30px 90px rgba(0, 0, 0, .45);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.lightbox__close {
+    align-self: flex-end;
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    border: 1px solid rgba(15, 23, 42, .12);
+    background: #fff;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.lightbox__img {
+    width: 100%;
+    height: auto;
+    max-height: calc(92vh - 140px);
+    object-fit: contain;
+    border-radius: 14px;
+    background: rgba(15, 23, 42, .06);
+}
+
+.lightbox__caption {
+    color: rgba(15, 23, 42, .85);
+    font-size: 14px;
+    line-height: 1.35;
+}

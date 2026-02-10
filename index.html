@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nosso Álbum</title>
+    <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+
+<body>
+
+    <main class="app">
+        <section class="stage">
+
+            <!-- VIEW: CAPA (ÁLBUM FECHADO) -->
+            <div class="view" id="viewCover">
+                <div class="cover-rect">
+                    <div class="cover-content">
+                        <h1 class="cover-title">Nosso Álbum</h1>
+                        <p class="cover-subtitle">2024 -</p>
+
+                        <div class="cover-photo">
+                            <img src="assets/thumb-album/thumb album.jpeg" alt="Foto da capa" />
+                        </div>
+
+                        <div class="see-photos">
+                            <button id="btnOpenAlbum" class="btn-primary" type="button">
+                                Ver Fotos
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIEW: ÁLBUM ABERTO -->
+            <div class="view is-hidden" id="viewAlbum">
+                <div class="spread">
+                    <div class="page-rect page-left">
+                        <button class="nav-btn nav-left" id="btnBack" type="button" aria-label="Voltar">
+                            &#8592;
+                        </button>
+                        <div class="page-content" id="pageLeft"></div>
+                    </div>
+
+                    <div class="page-rect page-right">
+                        <button class="nav-btn nav-right" id="btnNext" type="button" aria-label="Avançar">
+                            &#8594;
+                        </button>
+                        <div class="page-content" id="pageRight"></div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <script src="assets/js/app.js"></script>
+
+</body>
+
+</html>
